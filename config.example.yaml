@@ -1,0 +1,88 @@
+# Portfolio Optimization Configuration — Consumer sector (EXAMPLE)
+# Copy to config.yaml and replace with your universe, weights, and views.
+
+portfolio:
+  name: "Consumer Sector Sleeve"
+  total_value: 1000000  # USD — set your sleeve notional locally
+  seed_total_assets: 5000000
+  seed_max_pct: 0.08
+
+tickers:
+  - KO
+  - PEP
+  - MCD
+  - SBUX
+  - WMT
+
+# Equal-weight baseline prior (replace with your current allocation)
+before_weights:
+  KO: 0.20
+  PEP: 0.20
+  MCD: 0.20
+  SBUX: 0.20
+  WMT: 0.20
+
+data:
+  start_date: "2023-01-23"
+  end_date: "2026-01-23"
+  frequency: "daily"
+
+risk_free_rate: 0.045
+
+constraints:
+  long_only: true
+  fully_invested: true
+  max_weight: 0.20
+  min_weight: 0.0
+  turnover_cap: null
+
+mean_variance:
+  lambda_min: 0.1
+  lambda_max: 10.0
+  lambda_points: 30
+  lambda_scale: "log"
+  returns_shrinkage: 0.0
+  covariance_method: "ledoit_wolf"
+
+black_litterman:
+  delta: 2.5
+  tau: 0.05
+  views:
+    WMT:
+      type: "absolute"
+      return: 0.03
+      confidence: 0.0004
+    KO:
+      type: "absolute"
+      return: 0.02
+      confidence: 0.0009
+
+black_litterman_sentiment:
+  enabled: true
+  news_lookback_days: 30
+  sentiment_weight: 0.5
+  ranking_tiers:
+    top_quartile: 0.04
+    second_quartile: 0.02
+    third_quartile: -0.01
+    bottom_quartile: -0.03
+  confidence_levels:
+    high: 0.0004
+    medium: 0.0009
+    low: 0.0025
+  finbert_model: "ProsusAI/finbert"
+  min_news_articles: 5
+  batch_size: 32
+  request_delay: 1.0
+
+output:
+  directory: "outputs"
+  save_csv: true
+  save_plots: true
+  plot_format: "png"
+  dpi: 300
+
+validation:
+  weight_sum_tolerance: 0.0001
+  max_constraint_violation: 0.0001
+  check_psd_covariance: true

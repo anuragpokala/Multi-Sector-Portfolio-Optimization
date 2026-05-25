@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables (API keys)
+.env
+
+# Data exports (may contain portfolio weights, metrics, backtests)
+*.csv
+*.xlsx
+*.xls
+
+# Local portfolio configuration (tickers, weights, dollar values)
+config.yaml
+config_industrial.yaml
+config_healthcare.yaml
+config_financials.yaml
+config_energy.yaml
+
+# Portfolio position / holdings spreadsheets
+stocks.xlsx
+**/stocks.xlsx
+**/holdings*.xlsx
+**/positions*.xlsx
+**/portfolio_*.xlsx
+consumers_optimization.xlsx
+
+# Generated outputs
+outputs/
+notebooks/outputs_*/
+notebooks/outputs_energy/
+notebooks/outputs_healthcare/
+notebooks/outputs_industrial/
+notebooks/outputs_financials/
+
+# Notebook backups (may contain executed outputs with sensitive data)
+*.bak
+*.bak*
+
+# Raw data directory
+data/
