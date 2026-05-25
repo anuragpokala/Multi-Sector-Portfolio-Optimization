@@ -76,3 +76,6 @@ notebooks/outputs_financials/
 
 # Raw data directory
 data/
+
+# Local git hooks (not shared via repo)
+.githooks/
